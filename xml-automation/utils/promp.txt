@@ -1,0 +1,18 @@
+runSetting
+    stepcount 
+    visualfieldconfig
+        stack
+            imagecountnegative
+            imagecountpositive
+
+incStep
+    inctime
+    well
+        letter
+        number
+    channel step
+        bleachtime
+        bleachcycle
+        marker
+        flourescence filter
+        bleach filter
