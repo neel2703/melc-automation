@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<melkIni xmlns="http://www.meltec.de/2004/xschema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.meltec.de/2004/xschema file:./melkIni.xsd">
+  <project xlink:href="URN:LSID:lsid.meltec.de:project:10000"/>
+  <run xlink:href="URN:LSID:lsid.meltec.de:run:10003"/>
+  <slide xlink:href="URN:LSID:lsid.meltec.de:slide:1001"/>
+  <melkRobot>
+    <melkId xlink:href="URN:LSID:lsid.meltec.de:melk:1"/>
+    <name>drfz_tic_001</name>
+  </melkRobot>
+  <optic>
+    <lens>
+      <lensId xlink:href="URN:LSID:lsid.meltec.de:lens:4"/>
+      <name>HC PL Fluotar 20x/0.80 PH 2</name>
+      <magnification>20</magnification> 
+      <numericAperture>0.8</numericAperture>
+      <medium>Air</medium>
+      <workDistance>1150</workDistance>
+      <phaseContrast>Y</phaseContrast>
+    </lens>
+    <camera>
+      <cameraId xlink:href="URN:LSID:lsid.meltec.de:camera:1"/>
+      <name>Orca Flash 4.0 LT</name>
+      <chipWidth>2048</chipWidth>
+      <chipHeight>2048</chipHeight>
+      <pixelsizeX>6.5</pixelsizeX>
+      <pixelsizeY>6.5</pixelsizeY>
+    </camera>
+    <binFactorX>1</binFactorX>
+    <binFactorY>1</binFactorY>
+    <lightPath>
+      <magnificationAdapter>1.0</magnificationAdapter>
+      <magnificationTubus>1.0</magnificationTubus>
+      <transmissionFactor>1.0</transmissionFactor>
+      <tubusLength>160</tubusLength>
+    </lightPath>
+  </optic>
+  <runSetting>
+    <exposureTime>50</exposureTime>
+    <imageDirectory>C:\LocalMelkDir\Trials\201201191209_1\</imageDirectory>
+    <fluorescenceImagePrefix>source\o_</fluorescenceImagePrefix>
+    <bleachImagePrefix>bleach\b_</bleachImagePrefix>
+    <phaseImagePrefix>source\p_</phaseImagePrefix>
+    <phaseBleachImagePrefix>bleach\pb_</phaseBleachImagePrefix>
+    <imageFormat>.png</imageFormat>
+    <startingStep>1</startingStep>
+    <stepCount>56</stepCount>
+    <pipVolume>100</pipVolume>
+    <pipABRatio>50</pipABRatio>
+    <pipABMixCount>1</pipABMixCount>
+    <doubleVolume>true</doubleVolume>
+    <doubleVolumeClean>true</doubleVolumeClean>
+    <visualFieldCount>3</visualFieldCount>
+    <visualFieldConfig visualFieldNumber="1">
+      <runLSID xlink:href="URN:LSID:lsid.meltec.de:run:10003"/>
+      <xPosition>0</xPosition>
+      <yPosition>0</yPosition>
+      <zPosition>0</zPosition>
+      <stack>
+        <imageCountNegative>4</imageCountNegative>
+        <imageCountPositive>4</imageCountPositive>
+        <stepWidth>1000</stepWidth>
+      </stack>
+    </visualFieldConfig>
+    <visualFieldConfig visualFieldNumber="2">
+      <runLSID xlink:href="URN:LSID:lsid.meltec.de:run:10004"/>
+      <xPosition>0</xPosition>
+      <yPosition>0</yPosition>
+      <zPosition>0</zPosition>
+      <stack>
+        <imageCountNegative>4</imageCountNegative>
+        <imageCountPositive>4</imageCountPositive>
+        <stepWidth>1000</stepWidth>
+      </stack>
+    </visualFieldConfig>
+    <visualFieldConfig visualFieldNumber="3">
+      <runLSID xlink:href="URN:LSID:lsid.meltec.de:run:10003"/>
+      <xPosition>0</xPosition>
+      <yPosition>0</yPosition>
+      <zPosition>0</zPosition>
+      <stack>
+        <imageCountNegative>4</imageCountNegative>
+        <imageCountPositive>4</imageCountPositive>
+        <stepWidth>1000</stepWidth>
+      </stack>
+    </visualFieldConfig>
+    <phaseFilter name="116" 
+	xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+    <startProcedure>
+      <id>10</id>
+      <name>StartProcLoadProcessPlan</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>20</id>
+      <name>StartProcAcquireCalibrationImages</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>30</id>
+      <name>StartProcutSlideOnMelk</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>40</id>
+      <name>StartProcSetFluidLevel</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>50</id>
+      <name>StartProcSelectFieldOfView</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>60</id>
+      <name>StartProcPerformAutofocus</name>
+      <required>false</required>
+    </startProcedure>
+    <startProcedure>
+      <id>70</id>
+      <name>StartProcSaveReferenceImage</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>80</id>
+      <name>StartProcPerformAutofocusWithReferenceImage</name>
+      <required>false</required>
+    </startProcedure>
+    <startProcedure>
+      <id>90</id>
+      <name>StartProcAcquireFluorImage</name>
+      <required>true</required>
+    </startProcedure>
+    <startProcedure>
+      <id>100</id>
+      <name>StartProcReadyToStart</name>
+      <required>true</required>
+    </startProcedure>
+    <startFluorescenceImage>
+      <name>flstart</name>
+      <filterChannel name="116" 
+	  xlink:href="URN:LSID:lsid.meltec.de:filter:4"/>
+      <exposureTime>750</exposureTime>
+      <roiSize>100</roiSize>
+    </startFluorescenceImage>
+  </runSetting>
+  <autofocus>
+     <autofocusForAllSteps>true</autofocusForAllSteps>
+    <iterations>3</iterations>
+    <autofocusStep stepNumber="1">
+      <stepWidth>2000</stepWidth>
+      <zRange>12000</zRange>
+      <binFactorX>1</binFactorX>
+      <binFactorY>1</binFactorY>
+      <exposureTime>50</exposureTime>
+      <roiSize>25</roiSize>
+      <underSample>4</underSample>
+      <filterCount>1</filterCount>
+      <function>
+        <correlation>
+          <maxShiftX>60</maxShiftX>
+          <maxShiftY>60</maxShiftY>
+          <minMaxSearch>Min</minMaxSearch>
+          <xyThreshold>7</xyThreshold>
+        </correlation>
+      </function>
+    </autofocusStep>
+    <autofocusStep stepNumber="2">
+      <stepWidth>500</stepWidth>
+      <zRange>4000</zRange>
+      <binFactorX>1</binFactorX>
+      <binFactorY>1</binFactorY>
+      <exposureTime>50</exposureTime>
+      <roiSize>25</roiSize>
+      <underSample>2</underSample>
+      <filterCount>1</filterCount>
+      <function>
+        <correlation>
+          <maxShiftX>30</maxShiftX>
+          <maxShiftY>30</maxShiftY>
+          <minMaxSearch>Min</minMaxSearch>
+          <xyThreshold>5</xyThreshold>
+        </correlation>
+      </function>
+    </autofocusStep>
+    <autofocusStep stepNumber="3">
+      <stepWidth>250</stepWidth>
+      <zRange>1500</zRange>
+      <binFactorX>1</binFactorX>
+      <binFactorY>1</binFactorY>
+      <exposureTime>50</exposureTime>
+      <roiSize>25</roiSize>
+      <underSample>0</underSample>
+      <filterCount>0</filterCount>
+      <function>
+        <correlation>
+          <maxShiftX>10</maxShiftX>
+          <maxShiftY>10</maxShiftY>
+          <minMaxSearch>Min</minMaxSearch>
+        </correlation>
+      </function>
+    </autofocusStep>
+	  </autofocus>
+  <calibrationImages>
+       <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d001</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d002</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d003</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="405" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d001</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="405" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d002</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="405" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_d003</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <filePrefix>cal_d001</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <filePrefix>cal_d002</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <filePrefix>cal_d003</filePrefix>
+    </Dark>
+	 <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:3"/>
+      <filePrefix>cal_d001</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:3"/>
+      <filePrefix>cal_d002</filePrefix>
+    </Dark>
+    <Dark>
+      <exposureTime>450</exposureTime>
+      <filter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:3"/>
+      <filePrefix>cal_d003</filePrefix>
+    </Dark>
+    <Bright>
+      <exposureTime>450</exposureTime>
+      <filter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_b001</filePrefix>
+    </Bright>
+     <Bright>
+      <exposureTime>450</exposureTime>
+      <filter name="405" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_b001</filePrefix>
+    </Bright>
+    <Bright>
+      <exposureTime>450</exposureTime>
+      <filter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <filePrefix>cal_b001</filePrefix>
+    </Bright>
+	 <Bright>
+      <exposureTime>450</exposureTime>
+      <filter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:3"/>
+      <filePrefix>cal_b001</filePrefix>
+    </Bright>
+    <Phase>
+      <exposureTime>50</exposureTime>
+      <filter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_p001</filePrefix>
+    </Phase>
+    <Phase>
+      <exposureTime>50</exposureTime>
+      <filter name="405" xlink:href="URN:LSID:lsid.meltec.de:filter:2"/>
+      <filePrefix>cal_p001</filePrefix>
+    </Phase>
+    <Phase>
+      <exposureTime>50</exposureTime>
+      <filter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <filePrefix>cal_p001</filePrefix>
+    </Phase>
+	<Phase>
+      <exposureTime>50</exposureTime>
+      <filter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:3"/>
+      <filePrefix>cal_p001</filePrefix>
+    </Phase>
+  </calibrationImages>
+</melkIni>
