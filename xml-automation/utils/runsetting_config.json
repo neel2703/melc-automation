@@ -1,0 +1,20 @@
+{
+  "stepCount": 56,
+  "visualFieldCount": 3,
+  "imageCountNegative": 4,
+  "imageCountPositive": 4,
+  "visualFieldConfigs": [
+    {
+      "imageCountNegative": 4,
+      "imageCountPositive": 4
+    },
+    {
+      "imageCountNegative": 4,
+      "imageCountPositive": 4
+    },
+    {
+      "imageCountNegative": 4,
+      "imageCountPositive": 4
+    }
+  ]
+}
