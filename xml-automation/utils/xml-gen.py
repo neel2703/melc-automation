@@ -4,9 +4,13 @@ import pandas as pd
 import numpy as np
 from lxml import etree
 import json
+import sys
+
+xl_file_path = sys.argv[1] if len(sys.argv) > 1 else 'xml-automation/automatic_xml_creator/Template_Juergen_Sandy_test.xlsx'
+output_path = os.path.splitext(xl_file_path)[0] + '.xml'
 
 xml_file = 'xml-automation/automatic_xml_creator/template_base.xml'
-xl_file = pd.read_excel('xml-automation/automatic_xml_creator/Template_Juergen_Sandy_test.xlsx', sheet_name=None)
+xl_file = pd.read_excel(xl_file_path, sheet_name=None)
 run_settings_df = xl_file['Run_settings']
 marker_df = xl_file['MELC_panel']
 
@@ -18,6 +22,11 @@ tree = etree.parse(xml_file)
 root = tree.getroot()
 ns = 'http://www.meltec.de/2004/xschema'
 xlink_ns = 'http://www.w3.org/1999/xlink'
+# for elem in root.iter():
+#     if elem.text and elem.text.strip() == '':
+#         elem.text = None
+#     if elem.tail and elem.tail.strip() == '':
+#         elem.tail = None
 
 def tag(name):
     return f'{{{ns}}}{name}'
@@ -42,22 +51,35 @@ if run_setting is not None:
     vfc_elem = run_setting.find(tag('visualFieldCount'))
     if vfc_elem is not None:
         vfc_elem.text = str(visual_field_count)
+    # Remove any existing visualFieldConfig elements from the template
     for vfc in run_setting.findall(tag('visualFieldConfig')):
-        stack = vfc.find(tag('stack'))
-        if stack is not None:
-            neg = stack.find(tag('imageCountNegative'))
-            if neg is not None:
-                neg.text = str(img_count)
-            pos = stack.find(tag('imageCountPositive'))
-            if pos is not None:
-                pos.text = str(img_count)
+        run_setting.remove(vfc)
+
+    children = list(run_setting)
+    vfc_count_index = next(i for i, e in enumerate(children) if e.tag == tag('visualFieldCount'))
+
+    # Dynamically add one visualFieldConfig per visual field, inserted after visualFieldCount
+    for i in range(1, visual_field_count + 1):
+        vfc_elem = etree.Element('visualFieldConfig', visualFieldNumber=str(i))
+        run_lsid = etree.SubElement(vfc_elem, 'runLSID')
+        run_lsid.set('{http://www.w3.org/1999/xlink}href', 'URN:LSID:lsid.meltec.de:run:10003')
+        run_lsid.text = ''
+        etree.SubElement(vfc_elem, 'xPosition').text = '0'
+        etree.SubElement(vfc_elem, 'yPosition').text = '0'
+        etree.SubElement(vfc_elem, 'zPosition').text = '0'
+        stack_elem = etree.SubElement(vfc_elem, 'stack')
+        etree.SubElement(stack_elem, 'imageCountNegative').text = str(img_count)
+        etree.SubElement(stack_elem, 'imageCountPositive').text = str(img_count)
+        etree.SubElement(stack_elem, 'stepWidth').text = '1000'
+        run_setting.insert(vfc_count_index + i, vfc_elem)
+
 
 # function to add a channelStep element
 def add_channel_step(parent, step_num, marker_full, bleachtime, bleachcycle, fluorescence_filter, bleach_filter, marker_conc):
     """Helper to add a channelStep element."""
     channel_elem = etree.SubElement(parent, 'channelStep', stepNumber=str(step_num))
     etree.SubElement(channel_elem, 'type').text = 'full'
-    etree.SubElement(channel_elem, 'exposureTime').text = '450'
+    etree.SubElement(channel_elem, 'exposureTime').text = '100' if str(fluorescence_filter) == '405' else '450'
     etree.SubElement(channel_elem, 'bleachTime').text = str(bleachtime)
     etree.SubElement(channel_elem, 'bleachCycle').text = str(bleachcycle)
     marker_elem = etree.SubElement(channel_elem, 'marker', name=marker_full)
@@ -74,22 +96,32 @@ def add_channel_step(parent, step_num, marker_full, bleachtime, bleachcycle, flu
 for idx, (incstep_count, group) in enumerate(groups):
     incstep_count = int(incstep_count)
 
-    # Dyes in current group
-    current_dyes = set()
+    # Channels used in current group
+    current_channels = set()
     for _, row in group.iterrows():
-        dye = row.iloc[2]
-        if pd.notna(dye):
-            current_dyes.add(str(dye).strip())
+        dye = str(row.iloc[2]).strip() if pd.notna(row.iloc[2]) else None
+        if dye and dye in mapper:
+            current_channels.add(mapper[dye])
 
-    # Dyes in next group (for prep): if a dye in next step wasn't used in current, add prep channelStep
-    next_dyes = set()
+    # Channels used in next group
+    next_channels = set()
     if idx + 1 < len(groups):
         next_group = groups[idx + 1][1]
         for _, row in next_group.iterrows():
-            dye = row.iloc[2]
-            if pd.notna(dye):
-                next_dyes.add(str(dye).strip())
-    dyes_to_prep = next_dyes - current_dyes
+            dye = str(row.iloc[2]).strip() if pd.notna(row.iloc[2]) else None
+            if dye and dye in mapper:
+                next_channels.add(mapper[dye])
+
+    # Channels in next step that aren't in current step -> need prepping
+    channels_to_prep = next_channels - current_channels
+
+    # Representative dye to use for each channel
+    channel_prep_dye = {
+        '111': 'PE',
+        '116': 'FITC',
+        '405': 'DAPI',
+        '647': 'APC',
+    }
 
     # Get well info from first row
     first_row = group.iloc[0]
@@ -135,16 +167,18 @@ for idx, (incstep_count, group) in enumerate(groups):
         add_channel_step(incstep_elem, channel_step_num, marker_full, bleachtime, bleachcycle, fluorescenceFilter, bleachFilter, marker_conc)
         channel_step_num += 1
 
-    # Add prep channelSteps for dyes used in next step but not in current
-    for dye in sorted(dyes_to_prep):
-        fluorescenceFilter = mapper.get(dye)
-        bleachFilter = fluorescenceFilter
-        marker_full = f"PBS-{dye}_450"
-        add_channel_step(incstep_elem, channel_step_num, marker_full, 0, 0, fluorescenceFilter, bleachFilter, "1")
-        channel_step_num += 1
+    # Add prep channelSteps for channels used in next step but not in current
+    for channel in sorted(channels_to_prep):
+        prep_dye = channel_prep_dye.get(channel)
+        if prep_dye:
+            fluorescenceFilter = channel
+            bleachFilter = channel
+            marker_full = f"PBS-{prep_dye}_450"
+            add_channel_step(incstep_elem, channel_step_num, marker_full, 0, 0, fluorescenceFilter, bleachFilter, "1")
+            channel_step_num += 1
 
 # Write the XML to file (indent ensures generated incSteps are properly formatted)
 etree.indent(tree, space="  ")
-tree.write('output_new_test.xml', pretty_print=True, xml_declaration=True, encoding='UTF-8')
+tree.write(output_path, pretty_print=True, xml_declaration=True, encoding='UTF-8')
 
-print("XML file created successfully: output.xml")
+print(f"XML file created successfully: {output_path}")
