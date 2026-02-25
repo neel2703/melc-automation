@@ -6,7 +6,7 @@ from lxml import etree
 import json
 
 xml_file = 'xml-automation/automatic_xml_creator/template_base.xml'
-xl_file = pd.read_excel('xml-automation/automatic_xml_creator/Template_Juergen.xlsx', sheet_name=None)
+xl_file = pd.read_excel('xml-automation/automatic_xml_creator/Template_Juergen_Sandy_test.xlsx', sheet_name=None)
 run_settings_df = xl_file['Run_settings']
 marker_df = xl_file['MELC_panel']
 
