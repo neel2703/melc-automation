@@ -43,21 +43,21 @@
     <phaseBleachImagePrefix>bleach\pb_</phaseBleachImagePrefix>
     <imageFormat>.png</imageFormat>
     <startingStep>1</startingStep>
-    <stepCount>56</stepCount>
+    <stepCount>26</stepCount>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
     <pipABMixCount>1</pipABMixCount>
     <doubleVolume>true</doubleVolume>
     <doubleVolumeClean>true</doubleVolumeClean>
-    <visualFieldCount>3</visualFieldCount>
+    <visualFieldCount>2</visualFieldCount>
     <visualFieldConfig visualFieldNumber="1">
       <runLSID xlink:href="URN:LSID:lsid.meltec.de:run:10003"/>
       <xPosition>0</xPosition>
       <yPosition>0</yPosition>
       <zPosition>0</zPosition>
       <stack>
-        <imageCountNegative>4</imageCountNegative>
-        <imageCountPositive>4</imageCountPositive>
+        <imageCountNegative>5</imageCountNegative>
+        <imageCountPositive>5</imageCountPositive>
         <stepWidth>1000</stepWidth>
       </stack>
     </visualFieldConfig>
@@ -67,8 +67,8 @@
       <yPosition>0</yPosition>
       <zPosition>0</zPosition>
       <stack>
-        <imageCountNegative>4</imageCountNegative>
-        <imageCountPositive>4</imageCountPositive>
+        <imageCountNegative>5</imageCountNegative>
+        <imageCountPositive>5</imageCountPositive>
         <stepWidth>1000</stepWidth>
       </stack>
     </visualFieldConfig>
@@ -78,8 +78,8 @@
       <yPosition>0</yPosition>
       <zPosition>0</zPosition>
       <stack>
-        <imageCountNegative>4</imageCountNegative>
-        <imageCountPositive>4</imageCountPositive>
+        <imageCountNegative>5</imageCountNegative>
+        <imageCountPositive>5</imageCountPositive>
         <stepWidth>1000</stepWidth>
       </stack>
     </visualFieldConfig>
@@ -370,7 +370,7 @@
     </channelStep>
   </incStep>
   <incStep stepNumber="2">
-    <incTime>3300</incTime>
+    <incTime>3000</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
     <pipABMixCount>1</pipABMixCount>
@@ -380,6 +380,64 @@
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>A</letter>
       <number>2</number>
+      <volume>60</volume>
+    </well>
+    <channelStep stepNumber="1">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>300</bleachTime>
+      <bleachCycle>3</bleachCycle>
+      <marker name="KLRG1-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1:57.6</markerConcentration>
+      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+    <channelStep stepNumber="2">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>0</bleachTime>
+      <bleachCycle>0</bleachCycle>
+      <marker name="PBS-A405_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1</markerConcentration>
+      <fluorescenceFilter name="None" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="None" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+    <channelStep stepNumber="3">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>0</bleachTime>
+      <bleachCycle>0</bleachCycle>
+      <marker name="PBS-A488_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1</markerConcentration>
+      <fluorescenceFilter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+    <channelStep stepNumber="4">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>0</bleachTime>
+      <bleachCycle>0</bleachCycle>
+      <marker name="PBS-APC_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1</markerConcentration>
+      <fluorescenceFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+  </incStep>
+  <incStep stepNumber="3">
+    <incTime>3300</incTime>
+    <pipVolume>100</pipVolume>
+    <pipABRatio>50</pipABRatio>
+    <pipABMixCount>1</pipABMixCount>
+    <cleanCycle>30</cleanCycle>
+    <noImaging>false</noImaging>
+    <well plateName="AK96_1_1">
+      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
+      <letter>A</letter>
+      <number>3</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -449,7 +507,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="3">
+  <incStep stepNumber="4">
     <incTime>3300</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -459,7 +517,7 @@
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>A</letter>
-      <number>3</number>
+      <number>4</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -496,7 +554,43 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="4">
+  <incStep stepNumber="5">
+    <incTime>900</incTime>
+    <pipVolume>100</pipVolume>
+    <pipABRatio>50</pipABRatio>
+    <pipABMixCount>1</pipABMixCount>
+    <cleanCycle>30</cleanCycle>
+    <noImaging>false</noImaging>
+    <well plateName="AK96_1_1">
+      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
+      <letter>A</letter>
+      <number>5</number>
+      <volume>60</volume>
+    </well>
+    <channelStep stepNumber="1">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>300</bleachTime>
+      <bleachCycle>3</bleachCycle>
+      <marker name="CD169-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1:57.6</markerConcentration>
+      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+    <channelStep stepNumber="2">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>0</bleachTime>
+      <bleachCycle>0</bleachCycle>
+      <marker name="PBS-FITC_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1</markerConcentration>
+      <fluorescenceFilter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="116" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+  </incStep>
+  <incStep stepNumber="6">
     <incTime>3300</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -506,7 +600,7 @@
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>A</letter>
-      <number>4</number>
+      <number>6</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -543,7 +637,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="5">
+  <incStep stepNumber="7">
     <incTime>3300</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -553,7 +647,7 @@
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>A</letter>
-      <number>5</number>
+      <number>7</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -579,7 +673,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="6">
+  <incStep stepNumber="8">
     <incTime>3300</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -589,7 +683,7 @@
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>A</letter>
-      <number>6</number>
+      <number>8</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -615,58 +709,8 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="7">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>A</letter>
-      <number>7</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="GATA3-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="8">
-    <incTime>900</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>A</letter>
-      <number>8</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD169-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
   <incStep stepNumber="9">
-    <incTime>900</incTime>
+    <incTime>3300</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
     <pipABMixCount>1</pipABMixCount>
@@ -681,17 +725,17 @@
     <channelStep stepNumber="1">
       <type>full</type>
       <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD146-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:48</markerConcentration>
+      <bleachTime>300</bleachTime>
+      <bleachCycle>3</bleachCycle>
+      <marker name="GATA3-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1:57.6</markerConcentration>
       <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
   <incStep stepNumber="10">
-    <incTime>3000</incTime>
+    <incTime>900</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
     <pipABMixCount>1</pipABMixCount>
@@ -706,10 +750,10 @@
     <channelStep stepNumber="1">
       <type>full</type>
       <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="KLRG1-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
+      <bleachTime>600</bleachTime>
+      <bleachCycle>6</bleachCycle>
+      <marker name="CD146-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1:48</markerConcentration>
       <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <stopAfterImaging>false</stopAfterImaging>
@@ -866,7 +910,7 @@
     </channelStep>
   </incStep>
   <incStep stepNumber="17">
-    <incTime>3300</incTime>
+    <incTime>2700</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
     <pipABMixCount>1</pipABMixCount>
@@ -876,781 +920,6 @@
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
       <letter>B</letter>
       <number>5</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="FoxP3-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="18">
-    <incTime>1800</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>6</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="Gr1-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="19">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>7</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="Eomes-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="20">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>8</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="PDGFRa-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="21">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>9</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="SiglecF-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="22">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>10</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="ICOS-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="23">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>11</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="Lyve1-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:59.4</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="24">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>B</letter>
-      <number>12</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="B220-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="25">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>1</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="EpCAM-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:59.4</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="26">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>2</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD8a-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:48</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="27">
-    <incTime>3000</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>3</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD206-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="28">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>4</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="NK1.1-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="29">
-    <incTime>1800</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>5</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD31-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="30">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>6</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD25-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:55.2</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="31">
-    <incTime>3000</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>7</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="iNOS-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="32">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>8</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="PDPN-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:59.4</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="33">
-    <incTime>2400</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>9</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD68-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:48</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="34">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>10</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="FN-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="35">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>11</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="Mac2-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="36">
-    <incTime>1800</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>C</letter>
-      <number>12</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD19-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="37">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>1</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="TCRa/b-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:48</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="38">
-    <incTime>1800</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>2</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD80-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="39">
-    <incTime>900</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>3</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD200-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="40">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>4</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="TCRg/d-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:48</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="41">
-    <incTime>3300</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>5</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD69-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="42">
-    <incTime>3000</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>6</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD49a-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="43">
-    <incTime>2400</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>7</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="Perforin-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="44">
-    <incTime>1800</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>8</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD24-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="45">
-    <incTime>2400</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>9</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="Granzyme A-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57.6</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="46">
-    <incTime>2400</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>10</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD11b-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.8</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="47">
-    <incTime>2400</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>11</number>
-      <volume>60</volume>
-    </well>
-    <channelStep stepNumber="1">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="CD115-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:55.2</markerConcentration>
-      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-  </incStep>
-  <incStep stepNumber="48">
-    <incTime>2700</incTime>
-    <pipVolume>100</pipVolume>
-    <pipABRatio>50</pipABRatio>
-    <pipABMixCount>1</pipABMixCount>
-    <cleanCycle>30</cleanCycle>
-    <noImaging>false</noImaging>
-    <well plateName="AK96_1_1">
-      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>D</letter>
-      <number>12</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1665,7 +934,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="49">
+  <incStep stepNumber="18">
     <incTime>900</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1674,8 +943,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>1</number>
+      <letter>B</letter>
+      <number>6</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1690,7 +959,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="50">
+  <incStep stepNumber="19">
     <incTime>2700</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1699,8 +968,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>2</number>
+      <letter>B</letter>
+      <number>7</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1715,7 +984,32 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="51">
+  <incStep stepNumber="20">
+    <incTime>3000</incTime>
+    <pipVolume>100</pipVolume>
+    <pipABRatio>50</pipABRatio>
+    <pipABMixCount>1</pipABMixCount>
+    <cleanCycle>30</cleanCycle>
+    <noImaging>false</noImaging>
+    <well plateName="AK96_1_1">
+      <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
+      <letter>B</letter>
+      <number>8</number>
+      <volume>60</volume>
+    </well>
+    <channelStep stepNumber="1">
+      <type>full</type>
+      <exposureTime>450</exposureTime>
+      <bleachTime>600</bleachTime>
+      <bleachCycle>6</bleachCycle>
+      <marker name="CD90.2-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
+      <markerConcentration>1:59.4</markerConcentration>
+      <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
+      <stopAfterImaging>false</stopAfterImaging>
+    </channelStep>
+  </incStep>
+  <incStep stepNumber="21">
     <incTime>900</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1724,8 +1018,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>3</number>
+      <letter>B</letter>
+      <number>9</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1740,7 +1034,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="52">
+  <incStep stepNumber="22">
     <incTime>3000</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1749,8 +1043,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>4</number>
+      <letter>B</letter>
+      <number>10</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1776,7 +1070,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="53">
+  <incStep stepNumber="23">
     <incTime>3000</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1785,8 +1079,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>5</number>
+      <letter>B</letter>
+      <number>11</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1812,7 +1106,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="54">
+  <incStep stepNumber="24">
     <incTime>3000</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1821,8 +1115,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>6</number>
+      <letter>B</letter>
+      <number>12</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1831,24 +1125,13 @@
       <bleachTime>600</bleachTime>
       <bleachCycle>6</bleachCycle>
       <marker name="CD105-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:58.199999999999996</markerConcentration>
+      <markerConcentration>1:59.4</markerConcentration>
       <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
-    <channelStep stepNumber="2">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>300</bleachTime>
-      <bleachCycle>3</bleachCycle>
-      <marker name="PDGFRb-APC_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:nan</markerConcentration>
-      <fluorescenceFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
   </incStep>
-  <incStep stepNumber="55">
+  <incStep stepNumber="25">
     <incTime>3000</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1857,8 +1140,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>7</number>
+      <letter>C</letter>
+      <number>1</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
@@ -1867,23 +1150,12 @@
       <bleachTime>300</bleachTime>
       <bleachCycle>3</bleachCycle>
       <marker name="F4/80-PE_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:57</markerConcentration>
+      <markerConcentration>1:57.6</markerConcentration>
       <fluorescenceFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <bleachFilter name="111" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
     <channelStep stepNumber="2">
-      <type>full</type>
-      <exposureTime>450</exposureTime>
-      <bleachTime>600</bleachTime>
-      <bleachCycle>6</bleachCycle>
-      <marker name="CD90.2-APC_450" xlink:href="URN:LSID:lsid.meltec.de:marker:1002"/>
-      <markerConcentration>1:nan</markerConcentration>
-      <fluorescenceFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <bleachFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
-      <stopAfterImaging>false</stopAfterImaging>
-    </channelStep>
-    <channelStep stepNumber="3">
       <type>full</type>
       <exposureTime>450</exposureTime>
       <bleachTime>0</bleachTime>
@@ -1894,7 +1166,7 @@
       <bleachFilter name="647" xlink:href="URN:LSID:lsid.meltec.de:filter:1"/>
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
-    <channelStep stepNumber="4">
+    <channelStep stepNumber="3">
       <type>full</type>
       <exposureTime>450</exposureTime>
       <bleachTime>0</bleachTime>
@@ -1906,7 +1178,7 @@
       <stopAfterImaging>false</stopAfterImaging>
     </channelStep>
   </incStep>
-  <incStep stepNumber="56">
+  <incStep stepNumber="26">
     <incTime>1800</incTime>
     <pipVolume>100</pipVolume>
     <pipABRatio>50</pipABRatio>
@@ -1915,8 +1187,8 @@
     <noImaging>false</noImaging>
     <well plateName="AK96_1_1">
       <plateLSID xlink:href="URN:LSID:lsid.meltec.de:plate:2"/>
-      <letter>E</letter>
-      <number>8</number>
+      <letter>C</letter>
+      <number>2</number>
       <volume>60</volume>
     </well>
     <channelStep stepNumber="1">
