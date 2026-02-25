@@ -13,15 +13,6 @@ marker_df = xl_file['MELC_panel']
 with open('xml-automation/utils/mapper.json', 'r') as f:
     mapper = json.load(f)
 
-# Load runSetting config if it exists
-# runsetting_config = None
-# if os.path.exists(config_file):
-#     try:
-#         with open(config_file, 'r') as f:
-#             runsetting_config = json.load(f)
-#     except (json.JSONDecodeError, IOError):
-#         pass
-
 # Parse the template XML file
 tree = etree.parse(xml_file)
 root = tree.getroot()
@@ -31,45 +22,10 @@ xlink_ns = 'http://www.w3.org/1999/xlink'
 def tag(name):
     return f'{{{ns}}}{name}'
 
-# Apply runSetting config to XML
-# if runsetting_config:
-#     run_setting = root.find(tag('runSetting'))
-#     if run_setting is not None:
-#         # stepCount
-#         step_count = runsetting_config.get('stepCount')
-#         if step_count is not None:
-#             sc_elem = run_setting.find(tag('stepCount'))
-#             if sc_elem is not None:
-#                 sc_elem.text = str(step_count)
-#         # visualFieldCount
-#         vf_count = runsetting_config.get('visualFieldCount')
-#         if vf_count is not None:
-#             vfc_elem = run_setting.find(tag('visualFieldCount'))
-#             if vfc_elem is not None:
-#                 vfc_elem.text = str(vf_count)
-#         # visualFieldConfig stack: imageCountNegative, imageCountPositive
-#         configs = runsetting_config.get('visualFieldConfigs', [])
-#         vf_configs = run_setting.findall(tag('visualFieldConfig'))
-#         for i, vfc in enumerate(vf_configs):
-#             if i < len(configs):
-#                 cfg = configs[i]
-#                 stack = vfc.find(tag('stack'))
-#                 if stack is not None:
-#                     neg = stack.find(tag('imageCountNegative'))
-#                     if neg is not None and 'imageCountNegative' in cfg:
-#                         neg.text = str(cfg['imageCountNegative'])
-#                     pos = stack.find(tag('imageCountPositive'))
-#                     if pos is not None and 'imageCountPositive' in cfg:
-#                         pos.text = str(cfg['imageCountPositive'])
-
-# stepCount limits how many incSteps we generate
-# step_count_limit = (
-#     runsetting_config.get('stepCount') if runsetting_config else None
-# )
-
+# slice the marker_df to only include the rows where the second column is not empty
 xl_file_clean = marker_df.iloc[1:].copy()
 xl_file_clean = xl_file_clean.dropna(subset=[xl_file_clean.columns[1]])
-xl_file_clean.iloc[:, 0] = xl_file_clean.iloc[:, 0].ffill()
+xl_file_clean.iloc[:, 0] = xl_file_clean.iloc[:, 0].ffill() # fill the first column with the previous value to make it easier for reading the data when grouped
 xl_file_clean.iloc[:, 7] = xl_file_clean.iloc[:, 7].ffill()
 
 groups = list(xl_file_clean.groupby(xl_file_clean.iloc[:, 0]))
@@ -77,6 +33,7 @@ step_count = len(groups)
 visual_field_count = int(run_settings_df.columns[1])
 img_count = int(run_settings_df.iloc[0,1])
 
+# run_setting xml elements
 run_setting = root.find(tag('runSetting'))
 if run_setting is not None:
     sc_elem = run_setting.find(tag('stepCount'))
@@ -95,6 +52,7 @@ if run_setting is not None:
             if pos is not None:
                 pos.text = str(img_count)
 
+# function to add a channelStep element
 def add_channel_step(parent, step_num, marker_full, bleachtime, bleachcycle, fluorescence_filter, bleach_filter, marker_conc):
     """Helper to add a channelStep element."""
     channel_elem = etree.SubElement(parent, 'channelStep', stepNumber=str(step_num))
