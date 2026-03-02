@@ -9,7 +9,6 @@ import sys
 
 
 def run_xml_gen(xl_path):
-    """Run the xml-gen script with the selected xl file."""
     app_dir = os.path.dirname(os.path.abspath(__file__))
     script_path = os.path.join(app_dir, "utils", "xml-gen.py")
     project_root = os.path.dirname(app_dir)
@@ -25,8 +24,19 @@ def run_xml_gen(xl_path):
             timeout=60,
         )
         if result.returncode == 0:
-            xml_path = os.path.splitext(xl_path)[0] + ".xml"
-            messagebox.showinfo("Success", f"XML generated successfully:\n{xml_path}")
+            # Parse warnings from output
+            warnings = []
+            for line in result.stdout.splitlines():
+                if line.startswith("WARNINGS:"):
+                    warnings = json.loads(line[len("WARNINGS:"):])
+                    break
+
+            if warnings:
+                warning_msg = "\n".join(f"⚠ {w}" for w in warnings)
+                messagebox.showwarning("Warnings", f"XML was generated but with warnings:\n\n{warning_msg}")
+            else:
+                xml_path = os.path.splitext(xl_path)[0] + ".xml"
+                messagebox.showinfo("Success", f"XML generated successfully:\n{xml_path}")
         else:
             messagebox.showerror(
                 "Generation Failed",

@@ -73,6 +73,40 @@ if run_setting is not None:
         etree.SubElement(stack_elem, 'stepWidth').text = '1000'
         run_setting.insert(vfc_count_index + i, vfc_elem)
 
+# function for the warnings
+def warnings(groups):
+    warnings = []
+
+    # Check 1: duplicate channels in same incStep
+    for incstep_count, group in groups:
+        channels_seen = []
+        for _, row in group.iterrows():
+            dye = str(row.iloc[2]).strip() if pd.notna(row.iloc[2]) else None
+            if dye and dye in mapper:
+                ch = mapper[dye]
+                if ch in channels_seen:
+                    warnings.append(f"Same channel ({ch}) encountered more than once in step {int(incstep_count)}")
+                else:
+                    channels_seen.append(ch)
+
+    # Check 2: wells not in chronological order
+    SKIP_WELLS = {'G11'}
+    well_order = []
+    for _, group in groups:
+        first_row = group.iloc[0]
+        if pd.notna(first_row.iloc[3]):
+            well = str(first_row.iloc[3]).strip()
+            if well not in SKIP_WELLS:
+                well_order.append(well)
+
+    def well_sort_key(w):
+        return (w[0], int(w[1:]))
+
+    expected = sorted(well_order, key=well_sort_key)
+    if well_order != expected:
+        warnings.append(f"Wells are not in chronological order. Got: {', '.join(well_order)}")
+
+    return warnings
 
 # function to add a channelStep element
 def add_channel_step(parent, step_num, marker_full, bleachtime, bleachcycle, fluorescence_filter, bleach_filter, marker_conc):
@@ -160,8 +194,9 @@ for idx, (incstep_count, group) in enumerate(groups):
         marker = row.iloc[1]
         dye = row.iloc[2]
         fluorescenceFilter = mapper.get(dye)
+        exposure_time = '100' if str(fluorescenceFilter) == '405' else '450'
         bleachFilter = fluorescenceFilter
-        marker_full = f"{marker}-{dye}_450"
+        marker_full = f"{marker}-{dye}_{exposure_time}"
         marker_conc = row.iloc[5]
         marker_conc = "1:" + str(marker_conc)
         add_channel_step(incstep_elem, channel_step_num, marker_full, bleachtime, bleachcycle, fluorescenceFilter, bleachFilter, marker_conc)
@@ -176,6 +211,10 @@ for idx, (incstep_count, group) in enumerate(groups):
             marker_full = f"PBS-{prep_dye}_450"
             add_channel_step(incstep_elem, channel_step_num, marker_full, 0, 0, fluorescenceFilter, bleachFilter, "1")
             channel_step_num += 1
+
+warnings = warnings(groups)
+# Print warnings as JSON so the app can read them
+print("WARNINGS:" + json.dumps(warnings))
 
 # Write the XML to file (indent ensures generated incSteps are properly formatted)
 etree.indent(tree, space="  ")
