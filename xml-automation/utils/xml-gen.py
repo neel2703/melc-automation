@@ -197,7 +197,7 @@ for idx, (incstep_count, group) in enumerate(groups):
         exposure_time = '100' if str(fluorescenceFilter) == '405' else '450'
         bleachFilter = fluorescenceFilter
         marker_full = f"{marker}-{dye}_{exposure_time}"
-        marker_conc = row.iloc[5]
+        marker_conc = row.iloc[4]
         marker_conc = "1:" + str(marker_conc)
         add_channel_step(incstep_elem, channel_step_num, marker_full, bleachtime, bleachcycle, fluorescenceFilter, bleachFilter, marker_conc)
         channel_step_num += 1

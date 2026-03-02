@@ -6,7 +6,7 @@ from tkinter import ttk, messagebox, filedialog
 import os
 import subprocess
 import sys
-
+import json
 
 def run_xml_gen(xl_path):
     app_dir = os.path.dirname(os.path.abspath(__file__))
